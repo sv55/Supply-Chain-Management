@@ -1,0 +1,127 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Decision Support System</title>
+<link rel="stylesheet" href="static/materialize.min.css">
+<link rel="stylesheet" href="static/prism.min.css">
+<link rel="stylesheet" href="static/style.css">
+
+<script type="text/javascript" src="static/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="static/angular.min.js"></script>
+<script type="text/javascript" src="static/prism.min.js"></script>
+
+<script src="static/materialize.min.js"></script>
+<script type="text/javascript" src="static/angular-materialize.js"></script>
+<script type="text/javascript" src="static/materialquery.js"></script>
+
+</head>
+<body>
+	<nav class="black z-depth-2">
+        <ul class="hide-on-med-and-down">
+            <li class="left"><a href="#!"><font size="5">Decision Support Console</font></a></li>
+            <li class="right"><a href="/orderPage">How much to order?</a></li>
+            <li class="right picker__list-item--selected indigo"><a href="#!">When to buy material?</a></li>
+            <li class="right"><a href="/deliveryPage">Where to deliver?</a></li>
+            <li class="right"><a href="/surplusPage">What to do with surplus material?</a></li>
+            <li class="right"><a href="/contractPage">Whom to award the contract?</a></li>
+        </ul>
+    </nav>
+    <br>
+	<form action="/materialQuery" method="post" role="form" id="materialForm">
+        <nav class="indigo z-depth-1">
+            <ul class="hide-on-med-and-down">
+                <li class="left">&nbsp;&nbsp;Parameters</li>
+            </ul>
+        </nav>
+		<table>
+			<tr>
+				<td>
+					<div class="card-panel z-depth-2">
+                        <div class="input-field">
+							<input name="dd" id="dd" type="number" class="validate">
+							<label for="dd">Demand per day</label>
+						</div>
+						<div class="input-field">
+							<input name="dw" id="dw" type="number" class="validate">
+							<label for="dw">Demand per week</label>
+						</div>
+						<div class="input-field">
+							<input name="ad" id="ad" type="number" class="validate">
+							<label for="ad">Annual Demand</label>
+						</div>
+						<div class="input-field">
+							<input name="cpo" id="cpo" type="number" class="validate">
+							<label for="cpo">Cost Per Order</label>
+						</div>
+						<div class="input-field">
+							<input name="cc" id="cc" type="number" class="validate">
+							<label for="cc">Carrying Cost</label>
+						</div>
+						<div class="input-field">
+							<input name="npo" id="npo" type="number" class="validate">
+							<label for="npo">Number of orders</label>
+						</div>
+						<div class="input-field">
+							<input name="uc" id="uc" type="number" class="validate">
+							<label for="uc">Unit Cost</label>
+						</div>
+						<div class="input-field">
+							<input name="oq" id="oq" type="number" class="validate">
+							<label for="oq">Order Quantity</label>
+						</div>
+					</div>
+                </td>
+                <td>
+                    <div class="card-panel z-depth-2">
+						<div class="input-field">
+							<input name="lt" id="lt" type="number" class="validate">
+							<label for="lt">Lead Time</label>
+						</div>
+						<div class="input-field">
+							<input name="rc" id="rc" type="number" class="validate">
+							<label for="rc">Rejection Cost</label>
+						</div>
+						<div class="input-field">
+							<input name="sc" id="sc" type="number" class="validate">
+							<label for="sc">Surplus Cost</label>
+						</div>
+                        <div class="input-field">
+							<input name="shc" id="shc" type="number" class="validate">
+							<label for="shc">Storages Cost</label>
+						</div>
+						<div class="input-field">
+							<input name="stc" id="stc" type="number" class="validate">
+							<label for="stc">Storage Capacity</label>
+						</div>
+						<div class="input-field">
+							<input name="sd" id="sd" type="number" class="validate">
+							<label for="sd">Standard Deviation of Demand</label>
+						</div>
+                        <div class="input-field">
+							<input name="sli" id="sli" type="number" class="validate">
+							<label for="sli">Service Level Importance</label>
+						</div>
+                        <div class="input-field">
+                            <input type="number" class="">
+						</div>
+				</td>
+			</tr>
+		</table>
+		<table>
+			<tr>
+				<td>
+					<button class="btn waves-effect waves-light indigo z-depth-2"
+						toast='click' data-message="Query Sent!"
+						onclick="sendRequest(); return false;">Submit Query</button>
+					<button class="btn waves-effect waves-light indigo z-depth-2" type="reset" onclick="resetData();">Reset Data</button>
+				</td>
+			</tr>
+		</table>
+        <div id="rdd"></div>
+		<div id="resultDiv">
+            <table id="rtable">
+            </table>
+        </div>
+	</form>
+</body>
+</html>
